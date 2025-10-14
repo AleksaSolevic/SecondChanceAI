@@ -34,7 +34,46 @@ const App = () => {
 
   // Initialize Google Generative AI with the API key
   const genAI = new GoogleGenerativeAI(API_KEY);
-  const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+
+  // System instructions for mental health assistant role
+  const systemInstruction = `Role:
+You are a supportive and empathetic AI assistant designed to help users improve their mental well-being through reflective conversation, evidence-based coping strategies, and emotional support. You are not a replacement for professional therapy but can provide guidance inspired by psychological principles such as CBT (Cognitive Behavioral Therapy), mindfulness, and positive psychology.
+
+
+Tone & Style:
+- Warm, calm, and non-judgmental
+- Conversational, natural, and emotionally intelligent
+- Avoid overly clinical language — sound like a compassionate coach or listener
+
+Core Objectives:
+- Help users explore their thoughts and emotions safely.
+- Encourage self-reflection and awareness.
+- Offer actionable, psychologically informed tools (e.g., journaling prompts, grounding exercises, reframing thoughts).
+- Gently guide users toward professional help if they mention distress, crisis, or self-harm.
+- Maintain privacy and trust at all times.
+
+Guidelines:
+- Always validate the user's emotions before giving advice.
+- Use open-ended questions to help the user reflect ("What do you think might help you feel a bit better right now?").
+- Keep responses concise and emotionally grounded.
+- Never give medical diagnoses or prescriptions.
+- If a user expresses thoughts of self-harm or suicide, respond with compassion and recommend they contact a trusted person or a mental health hotline:
+  * US: 988 Suicide & Crisis Lifeline
+  * UK: 116 123 (Samaritans)
+  * International: https://findahelpline.com
+
+Example tone:
+"It sounds like you've been carrying a lot lately. That must be really difficult. Would you like to talk about what's been weighing on you most?"`;
+
+  //ToDo:
+  //   Answers: Always reply in the same language the user uses.
+  //  Do not translate or define words unless asked.
+
+  const model = genAI.getGenerativeModel({
+    model: "gemini-2.5-flash-lite",
+    systemInstruction: systemInstruction,
+    temperature: 0.1,
+  });
 
   /**
    * Auto-scroll Effect
@@ -194,35 +233,78 @@ const App = () => {
   };
 
   return (
-    <div className="chat-container">
-      {/* Header Section */}
-      <div className="header">
-        <h1>AI Chatbot</h1>
-        <p>Powered by Google Gemini</p>
+    <div className="flex flex-col h-screen bg-gradient-to-br from-green-50 to-green-100">
+      {/* Decorative background circles */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-64 h-64 bg-green-200 rounded-full opacity-20 blur-3xl"></div>
+        <div className="absolute bottom-40 right-20 w-80 h-80 bg-green-300 rounded-full opacity-20 blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/3 w-96 h-96 bg-green-100 rounded-full opacity-30 blur-3xl"></div>
+      </div>
+
+      {/* Modern Header Section */}
+      <div className="relative bg-gradient-to-r from-green-800 to-green-900 text-slate-100 h-28 rounded-b-3xl shadow-lg px-6 flex items-center justify-center">
+        <div className="flex items-center gap-3">
+          <span className="text-3xl">🌿</span>
+          <div>
+            <h1 className="text-3xl font-bold">MindMate</h1>
+            <p className="text-sm font-medium text-green-200">
+              Your AI conversation partner
+            </p>
+          </div>
+        </div>
+        {/* Dynamic status line */}
+        {isThinking && (
+          <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2">
+            <p className="text-xs text-green-300 animate-pulse">
+              MindMate is listening...
+            </p>
+          </div>
+        )}
       </div>
 
       {/* Messages Container - Scrollable area for chat messages */}
-      <div className="messages-container">
+      <div className="relative flex-1 overflow-y-auto p-4 md:p-6 flex flex-col gap-4">
         {/* Welcome message when no messages exist */}
         {messages.length === 0 && (
-          <div className="welcome">
-            <h2>Welcome to AI Chatbot!</h2>
-            <p>Start a conversation by typing a message below.</p>
+          <div className="text-center text-slate-600 mt-12 animate-fade-in">
+            <div className="inline-block bg-white/80 backdrop-blur-sm rounded-3xl px-8 py-6 shadow-lg">
+              <h2 className="text-2xl font-bold text-green-800 mb-2">
+                Welcome to MindMate
+              </h2>
+              <p className="text-slate-700">
+                I'm here to support you. How are you feeling today?
+              </p>
+            </div>
           </div>
         )}
 
         {/* Render all messages in the chat */}
         {messages.map((message) => (
-          <div key={message.id} className={`message-row ${message.sender}`}>
-            <div className={`message-bubble ${message.sender}`}>
-              <div className="message-text">
+          <div
+            key={message.id}
+            className={`flex ${
+              message.sender === "user" ? "justify-end" : "justify-start"
+            } animate-fade-in`}
+          >
+            <div
+              className={`relative max-w-[75%] md:max-w-[70%] px-4 py-3 rounded-2xl shadow-md transition-all duration-300 hover:shadow-lg ${
+                message.sender === "user"
+                  ? "bg-green-400 text-white rounded-br-sm"
+                  : "bg-green-100 text-slate-800 rounded-bl-sm"
+              }`}
+            >
+              <div className="text-sm leading-relaxed mb-1">
                 {message.isHTML ? (
                   <div dangerouslySetInnerHTML={{ __html: message.text }} />
                 ) : (
                   message.text
                 )}
               </div>
-              <div className={`timestamp ${message.sender}`}>
+              <div
+                className={`text-xs mt-2 ${
+                  message.sender === "user" ? "text-green-50" : "text-slate-500"
+                }`}
+              >
                 {message.timestamp}
               </div>
             </div>
@@ -231,15 +313,15 @@ const App = () => {
 
         {/* Thinking indicator - shown while AI is processing */}
         {isThinking && (
-          <div className="thinking">
-            <div className="thinking-bubble">
-              <div className="thinking-content">
-                <div className="dots">
-                  <div className="dot"></div>
-                  <div className="dot"></div>
-                  <div className="dot"></div>
+          <div className="flex justify-start animate-fade-in">
+            <div className="bg-green-100 text-slate-800 max-w-xs rounded-2xl rounded-bl-sm px-4 py-3 shadow-md">
+              <div className="flex items-center gap-2">
+                <div className="flex gap-1">
+                  <div className="w-2 h-2 bg-green-600 rounded-full dot"></div>
+                  <div className="w-2 h-2 bg-green-600 rounded-full dot"></div>
+                  <div className="w-2 h-2 bg-green-600 rounded-full dot"></div>
                 </div>
-                <span>Thinking...</span>
+                <span className="text-sm">Thinking...</span>
               </div>
             </div>
           </div>
@@ -250,24 +332,29 @@ const App = () => {
       </div>
 
       {/* Input Area - Fixed at bottom of screen */}
-      <div className="input-area">
-        <div className="input-container">
-          {/* Text input field for user messages */}
-          <input
-            type="text"
-            value={inputText}
-            onChange={handleInputChange}
-            onKeyPress={handleKeyPress}
-            placeholder="Type your message..."
-            disabled={isThinking}
-            className="input-field"
-          />
+      <div className="relative bg-white/80 backdrop-blur-sm border-t border-green-200 p-4 md:p-6">
+        <div className="flex gap-3 max-w-4xl mx-auto">
+          {/* Text input field with icon */}
+          <div className="relative flex-1">
+            <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-green-600">
+              💭
+            </span>
+            <input
+              type="text"
+              value={inputText}
+              onChange={handleInputChange}
+              onKeyPress={handleKeyPress}
+              placeholder="Share what's on your mind..."
+              disabled={isThinking}
+              className="w-full border border-green-200 rounded-xl pl-12 pr-4 py-3 text-base outline-none transition-all focus:border-green-500 focus:ring-2 focus:ring-green-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-sm"
+            />
+          </div>
 
           {/* Send button */}
           <button
             onClick={sendMessage}
             disabled={!inputText.trim() || isThinking}
-            className="send-button"
+            className="bg-green-600 text-white px-6 py-3 rounded-xl font-medium transition-all hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-sm"
           >
             Send
           </button>
@@ -275,8 +362,10 @@ const App = () => {
 
         {/* API Key warning - shown if API key is not properly configured */}
         {!isApiKeySet() && (
-          <div className="api-warning">
-            <p>⚠️ Please set your Gemini API key in the .env file</p>
+          <div className="text-center mt-3">
+            <p className="text-xs text-red-500">
+              ⚠️ Please set your Gemini API key in the .env file
+            </p>
           </div>
         )}
       </div>

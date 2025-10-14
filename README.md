@@ -1,17 +1,61 @@
-# AI Chatbot with Google Gemini
+# MindMate - Your AI Conversation Partner
 
-A simple React chatbot frontend that uses the Google Gemini API for AI conversations.
+A compassionate React-based chatbot that provides mental health support using Google's Gemini AI. MindMate serves as a supportive companion for emotional wellness, offering evidence-based coping strategies and reflective conversation.
 
-## Features
+## 🎨 Design Theme
 
-- Clean, responsive chat interface using custom CSS
-- Real-time conversations with Google Gemini AI
-- Message history with timestamps
-- "Thinking..." indicator while AI responds
-- Auto-scroll to latest messages
-- Mobile-friendly design
-- Enter key support for sending messages
-- Environment variable configuration for API key
+MindMate features a calm, lively green color palette with a modern app-like interface:
+
+**Color Palette:**
+- **Background:** #F1F5F3 (Green-50) with gradient to Green-100
+- **Header:** Gradient from #166534 to #14532D (Green-800 to Green-900) with slate-100 text
+- **User Messages:** #4ADE80 (Green-400) with white text - right-aligned
+- **Bot Messages:** #D1FAE5 (Green-100) with slate-800 text - left-aligned
+- **Input Area:** White with green-200 border, shadow, rounded corners
+- **Send Button:** #16A34A (Green-600) with hover to Green-700
+- **Text:** #1E293B (Slate-800) for high readability
+
+**Visual Features:**
+- Modern app-like header with rounded bottom corners (rounded-b-3xl) and shadow-lg
+- 🌿 Leaf emoji branding element
+- Dynamic status line showing "MindMate is listening..." when AI is thinking
+- Decorative floating circles with blur effect for depth
+- Message bubbles with small "tails" (rounded-bl-sm/br-sm) for chat feel
+- Smooth fade-in animations for new messages
+- Emoji icons in input field (💭 thought bubble)
+- Backdrop blur effects for modern glass-morphism look
+- Fully responsive design for desktop and mobile
+- Inter font family for clean, modern typography
+
+## 🌟 Features
+
+- **Empathetic AI Support:** Configured with mental health psychology principles (CBT, mindfulness, positive psychology)
+- **Safe Space for Reflection:** Non-judgmental environment to explore thoughts and emotions
+- **Evidence-Based Guidance:** Actionable coping strategies, journaling prompts, and grounding exercises
+- **Crisis Support Resources:** Automatically provides helpline information when needed
+- **Real-time Conversations:** Responsive chat interface with message history
+- **Mobile-Friendly Design:** Works seamlessly across all devices
+
+## 🧠 Mental Health Features
+
+The AI assistant is trained to:
+- Validate emotions before offering advice
+- Use open-ended questions to encourage self-reflection
+- Provide psychologically-informed tools and techniques
+- Recognize crisis situations and offer appropriate resources
+- Maintain a warm, calm, and conversational tone
+- **Never diagnose or prescribe** - always encourages professional help when needed
+
+## 🚨 Important Disclaimer
+
+**This application is NOT a replacement for professional mental health care.**
+
+- If you're experiencing a mental health crisis, please contact emergency services or a crisis helpline immediately
+- **US:** 988 Suicide & Crisis Lifeline
+- **UK:** 116 123 (Samaritans)  
+- **International:** [Find A Helpline](https://findahelpline.com)
+
+This AI provides supportive conversation and wellness strategies but cannot diagnose conditions or prescribe treatment.
 
 ## Setup Instructions
 
@@ -60,9 +104,15 @@ This project uses Vite's environment variable system:
 
 ## Color Scheme
 
-- Primary: #2563eb (blue-600)
-- Secondary: #60a5fa (blue-400)
-- Background: #f1f5f9 (slate-100)
+**MindMate Green Palette:**
+- **Background:** #F1F5F3 (Green-50) with gradient to #DCFCE7 (Green-100)
+- **Header Gradient:** #166534 (Green-800) to #14532D (Green-900)
+- **User Messages:** #4ADE80 (Green-400) - Fresh, lively green
+- **Bot Messages:** #D1FAE5 (Green-100) - Soft, calming green tint
+- **Input Border:** #BBF7D0 (Green-200)
+- **Send Button:** #16A34A (Green-600) with hover to #15803D (Green-700)
+- **Text Primary:** #1E293B (Slate-800) - High contrast readability
+- **Decorative Elements:** Green-200, Green-300 with blur effects
 
 ## Security Note
 
@@ -104,9 +154,9 @@ The codebase includes comprehensive comments above each function explaining:
 ## Technologies Used
 
 - **React 19** with Hooks (useState, useEffect, useRef)
-- **Google Generative AI** (@google/generative-ai) for API integration
+- **Google Generative AI** (@google/generative-ai) for API integration with mental health system instructions
 - **Vite** for development and building
-- **Custom CSS** for responsive styling
+- **Custom CSS** with utility classes for responsive styling (Tailwind-inspired design system)
 - **Environment Variables** for secure API key management
 
 ## Available Scripts
