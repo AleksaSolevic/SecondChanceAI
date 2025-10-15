@@ -72,7 +72,7 @@ Example tone:
   const model = genAI.getGenerativeModel({
     model: "gemini-2.5-flash-lite",
     systemInstruction: systemInstruction,
-    temperature: 0.1,
+    temperature: 0.2,
   });
 
   /**
@@ -244,9 +244,9 @@ Example tone:
       {/* Modern Header Section */}
       <div className="relative bg-gradient-to-r from-green-800 to-green-900 text-slate-100 h-28 rounded-b-3xl shadow-lg px-6 flex items-center justify-center">
         <div className="flex items-center gap-3">
-          <span className="text-3xl">🌿</span>
+          <span className="text-3xl"></span>
           <div>
-            <h1 className="text-3xl font-bold">MindMate</h1>
+            <h1 className="text-3xl font-bold">MindMate 🌿</h1>
             <p className="text-sm font-medium text-green-200">
               Your AI conversation partner
             </p>
