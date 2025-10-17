@@ -1,3 +1,26 @@
+# Reflektioner 
+
+### Vilken ny AI-teknik/bibliotek identifierade ni och hur tillämpade ni det?
+
+De bibliotek/tekniker vi använde oss av är:
+- ***gemini-2.5-flash-lite*** - en förtränad maskininlärningsmodell. 
+- ***Natural Language Processing (NLP)*** - Chatboten kan föra konversationer, ställa öppna frågor och ge reflekterande stöd.
+- ***Systeminstruktion*** - AI:n är tränad med psykologiska principer (CBT, mindfulness, positiv psykologi) för att ge evidensbaserad support.
+- ***Empatisk respnsgenerering*** - Validerar användarens känslor innan råd ges, håller en varm och lugn ton.
+- ***Krisigenkänning*** - AI:n kan känna igen krissituationer och ge information om hjälplinjer.
+
+### Motivera varför ni valde den AI-tekniken/det biblioteket.
+
+Vi valde dessa tekniker/bibliotek för att AI:n ska kunna förstå och bemöta användaren på ett mänskligt, stödjande sätt, och vi valde Gemini API som bibliotek för att snabbt och säkert implementera detta i vår React-app.
+
+Vi testade flera modeller, men den som passade bäst för vår app var Gemini-2.5-flash-lite, eftersom den gav oss mycket snabbare svar än de andra modellerna av gemini-flash.
+Dessutom var integrationen i koden väldigt enkel, vi behövde bara skriva några rader kod för att använda GenerativeModel och generateContent för att kunna använda modellen.
+En annan bra sak med den här modellen är att den förstår vanligt språk väldigt bra.
+
+### Varför behövdes AI-komponenten? Skulle ni kunna löst det på ett annat sätt?
+
+AI-komponenten behövdes för att kunna skapa en dynamisk och empatisk konversation med användaren, där AI:n kan förstå känslor, ge evidensbaserade råd och identifiera potentiella krissituationer i realtid. Ett alternativ hade varit att använda statisk text eller förinspelade svar, men det skulle inte ge samma flexibilitet, anpassning eller förmåga att reagera på individuella behov hos användaren.
+
 # MindMate - Your AI Conversation Partner
 
 A compassionate React-based chatbot that provides mental health support using Google's Gemini AI. MindMate serves as a supportive companion for emotional wellness, offering evidence-based coping strategies and reflective conversation.
