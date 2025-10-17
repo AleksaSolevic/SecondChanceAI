@@ -6,7 +6,7 @@ De bibliotek/tekniker vi använde oss av är:
 - ***gemini-2.5-flash-lite*** - en förtränad maskininlärningsmodell. 
 - ***Natural Language Processing (NLP)*** - Chatboten kan föra konversationer, ställa öppna frågor och ge reflekterande stöd.
 - ***Systeminstruktion*** - AI:n är tränad med psykologiska principer (CBT, mindfulness, positiv psykologi) för att ge evidensbaserad support.
-- ***Empatisk respnsgenerering*** - Validerar användarens känslor innan råd ges, håller en varm och lugn ton.
+- ***Empatisk responsgenerering*** - Validerar användarens känslor innan råd ges, håller en varm och lugn ton.
 - ***Krisigenkänning*** - AI:n kan känna igen krissituationer och ge information om hjälplinjer.
 
 ### Motivera varför ni valde den AI-tekniken/det biblioteket.
@@ -20,6 +20,12 @@ En annan bra sak med den här modellen är att den förstår vanligt språk väl
 ### Varför behövdes AI-komponenten? Skulle ni kunna löst det på ett annat sätt?
 
 AI-komponenten behövdes för att kunna skapa en dynamisk och empatisk konversation med användaren, där AI:n kan förstå känslor, ge evidensbaserade råd och identifiera potentiella krissituationer i realtid. Ett alternativ hade varit att använda statisk text eller förinspelade svar, men det skulle inte ge samma flexibilitet, anpassning eller förmåga att reagera på individuella behov hos användaren.
+
+### Vidareutveckling
+
+Vi fördjupade oss i AI-världen genom att göra flera försök att använda olika AI-verktyg, tekniker och modeller.
+Under arbetets gång fick vi en god förståelse för att AI kan vara väldigt hjälpsamt vid kodskrivning, men att man aldrig ska lita på AI till 100 % utan att själv förstå koden.
+En annan sak vi insåg tidigt var vikten av att försöka hålla sig till ett verktyg, eftersom det blir svårare om man börjar blanda flera olika, då är det lätt att tappa bort sig.
 
 # MindMate - Your AI Conversation Partner
 
