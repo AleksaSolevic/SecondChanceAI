@@ -1,31 +1,58 @@
-# Reflektioner 
+# Reflektioner
+
+Vi skapade en AI-chatbot med fokus på mental hälsa och empatiska samtal. Under projektet testade vi flera AI-verktyg och tekniker för att förstå hur de kan användas för att skapa en trygg och stödjande användarupplevelse.
 
 ### Vilken ny AI-teknik/bibliotek identifierade ni och hur tillämpade ni det?
 
-De bibliotek/tekniker vi använde oss av är:
-- ***gemini-2.5-flash-lite*** - en förtränad maskininlärningsmodell. 
-- ***Natural Language Processing (NLP)*** - Chatboten kan föra konversationer, ställa öppna frågor och ge reflekterande stöd.
-- ***Systeminstruktion*** - AI:n är tränad med psykologiska principer (CBT, mindfulness, positiv psykologi) för att ge evidensbaserad support.
-- ***Empatisk responsgenerering*** - Validerar användarens känslor innan råd ges, håller en varm och lugn ton.
-- ***Krisigenkänning*** - AI:n kan känna igen krissituationer och ge information om hjälplinjer.
+Vi testade många olika tekniker och fick både bra och dåliga erfarenheter. Vi började med Cursor, som faktiskt var väldigt bra och hjälpte oss att skapa en bra frontend. Vi gillade den eftersom den påminner mycket om VS Code och är ganska smidig att arbeta i. Men på grund av att vi fick slut på tokens behövde vi byta till ett annat verktyg. Då uppstod en ”soppa” i projektet, och vi märkte tydligt att det inte fungerade att blanda flera olika verktyg. Vi blev förvirrade när vi började testa olika verktyg, samtidigt som vi försökte förstå koden och manuellt lösa de problem som uppstod.
+
+Efter många misslyckade försök bestämde vi oss för att börja om från början med hjälp av ChatGPT för att förbättra vår prompt, samt använda GitHub Copilot som stöd i kodningsdelen, och det fungerade mycket smidigare.
+
+Vi använde följande AI-komponenter och tekniker i projektet:
+
+- **_gemini-2.5-flash-lite_** - en förtränad maskininlärningsmodell.
+- **_Natural Language Processing (NLP)_** - Chatboten kan föra konversationer, ställa öppna frågor och ge reflekterande stöd.
+- **_Systeminstruktion_** - AI:n är tränad med psykologiska principer (CBT, mindfulness, positiv psykologi) för att ge evidensbaserad support.
+- **_Empatisk responsgenerering_** - Validerar användarens känslor innan råd ges, håller en varm och lugn ton.
+- **_Krisigenkänning_** - AI:n kan känna igen krissituationer och ge information om hjälplinjer.
 
 ### Motivera varför ni valde den AI-tekniken/det biblioteket.
 
-Vi valde dessa tekniker/bibliotek för att AI:n ska kunna förstå och bemöta användaren på ett mänskligt, stödjande sätt, och vi valde Gemini API som bibliotek för att snabbt och säkert implementera detta i vår React-app.
+Vi valde dessa tekniker eftersom vi ville skapa en AI som kunde förstå och bemöta användaren på ett mänskligt och stödjande sätt. Gemini API gjorde det enkelt att integrera AI direkt i vår React-app.
 
-Vi testade flera modeller, men den som passade bäst för vår app var Gemini-2.5-flash-lite, eftersom den gav oss mycket snabbare svar än de andra modellerna av gemini-flash.
-Dessutom var integrationen i koden väldigt enkel, vi behövde bara skriva några rader kod för att använda GenerativeModel och generateContent för att kunna använda modellen.
-En annan bra sak med den här modellen är att den förstår vanligt språk väldigt bra.
+Vi testade flera modeller och övervägde dessa, men den som passade bäst för vår app var Gemini-2.5-flash-lite. Vi valde denna främst eftersom den gav oss mycket snabbare svar än de andra modellerna av gemini-flash, och var lätt att integrera i vår kod. Vi märkte också att Gemini-modellen hanterade kontext mycket bättre än andra modeller vi testade, vilket gjorde att konversationerna kändes mer naturliga och relevanta över tid.
 
 ### Varför behövdes AI-komponenten? Skulle ni kunna löst det på ett annat sätt?
 
-AI-komponenten behövdes för att kunna skapa en dynamisk och empatisk konversation med användaren, där AI:n kan förstå känslor, ge evidensbaserade råd och identifiera potentiella krissituationer i realtid. Ett alternativ hade varit att använda statisk text eller förinspelade svar, men det skulle inte ge samma flexibilitet, anpassning eller förmåga att reagera på individuella behov hos användaren.
+GitHub Copilot hjälpte oss väldigt mycket med tempot när vi skapade vår grundläggande app. Vi hade kunnat skapa den utan AI, men det skulle ha tagit betydligt längre tid.
 
-### Vidareutveckling
+När det gäller AI-komponenten (Gemini API) var den helt nödvändig för att skapa en dynamisk och empatisk konversation med användaren, där AI:n kan förstå känslor, ge råd och identifiera potentiella krissituationer i realtid. Eftersom vår app handlar om mental hälsa så krävs det att svaren känns genuina, inkännande och varierande. Det är något som en statisk lösning aldrig hade klarat.
 
-Vi fördjupade oss i AI-världen genom att göra flera försök att använda olika AI-verktyg, tekniker och modeller.
-Under arbetets gång fick vi en god förståelse för att AI kan vara väldigt hjälpsamt vid kodskrivning, men att man aldrig ska lita på AI till 100 % utan att själv förstå koden.
-En annan sak vi insåg tidigt var vikten av att försöka hålla sig till ett verktyg, eftersom det blir svårare om man börjar blanda flera olika, då är det lätt att tappa bort sig.
+I teorin hade det dock varit möjligt att bygga något liknande. Ett alternativ hade varit att använda statisk text eller förinspelade svar, men det skulle inte ge samma flexibilitet, anpassning eller förmåga att reagera på individuella behov hos användaren.
+
+Att använda ett AI-API kändes som ett modernt och effektivt sätt att skapa något verkligt användbart, och gav oss också en bättre förståelse för hur man kan använda AI i framtida projekt.
+
+### Sammanfattning och Reflektion
+
+Trots att vårt första försök blev rörigt lyckades vi i det andra projektet ta fram en enklare fungerande version, vilket gav oss en bättre förståelse för hur AI kan användas på rätt sätt, och vi fick både positiva och negativa erfarenheter av att arbeta med AI.
+
+Det gav oss inspiration att fördjupa oss vidare, särskilt när det gäller hur man skriver tydliga prompts och hur mycket AI'ns svar påverkas av instruktionernas formulering.
+
+Vi lärde oss också hur viktigt det är att förstå logiken bakom koden som AI:n skapar, och att inte bara lita på resultatet. När vi testade att låta AI göra nästan allt själv märkte vi snabbt att kvaliteten blev sämre, men när vi tog mer kontroll själva blev resultatet mycket bättre. Det visade oss att AI fungerar bäst som ett verktyg, inte som en ersättare. Vi insåg också att AI-modeller ofta gissar när de saknar information, vilket gör det viktigt att förstå kodens logik och alltid verifiera resultatet själv.
+
+Vi lämnar kursen med en positiv bild av AI och en större trygghet i hur man kan använda det på rätt sätt i utvecklingsprojekt. Så länge vi håller balansen mellan “vibecoding” och riktig kodning kommer vi kunna använda AI för att både arbeta snabbare och mer effektivt framöver.
+
+### Fördjupning och Vidareutveckling
+
+Under arbetet valde vi att testa flera olika AI-verktyg och tekniker för att förstå deras styrkor och begränsningar. Vi började med Cursor, gick vidare till ChatGPT och använde även GitHub Copilot i kodningsdelen. Genom att jämföra resultaten fick vi en tydlig bild av hur olika verktyg hanterar kod, struktur och språk.
+
+Detta gjorde att vi kunde identifiera vilka verktyg som var mest lämpliga för vårt syfte, där vi till exempel märkte att Gemini-modellen passade bäst för vår typ av AI-chatbot. Vi lärde oss också att AI inte alltid är den bästa lösningen, till exempel när man behöver full kontroll över logik eller datasäkerhet.
+
+Vi fördjupade oss också i hur man kan styra en AI-modell genom systeminstruktioner och hur promptningen påverkar resultatet, vilket gjorde att vi kunde anpassa AI:ns ton och svar så de kändes empatiska och professionella.
+
+En viktig lärdom var att inte blanda för många verktyg samtidigt, eftersom det skapade förvirring i projektet. Vi förstod att stabilitet och tydliga processer är lika viktiga som själva AI-tekniken.
+
+Den här processen gav oss både teknisk förståelse och praktisk erfarenhet av hur AI faktiskt kan användas i ett riktigt utvecklingsflöde. Det visade oss också hur viktigt det är att vi som utvecklare fortfarande styr processen och tänker kritiskt. Vi har förstått varför vi aldrig ska lita på AI till 100% och insett vikten i att förstå koden vi skriver.
 
 # MindMate - Your AI Conversation Partner
 
@@ -36,6 +63,7 @@ A compassionate React-based chatbot that provides mental health support using Go
 MindMate features a calm, lively green color palette with a modern app-like interface:
 
 **Color Palette:**
+
 - **Background:** #F1F5F3 (Green-50) with gradient to Green-100
 - **Header:** Gradient from #166534 to #14532D (Green-800 to Green-900) with slate-100 text
 - **User Messages:** #4ADE80 (Green-400) with white text - right-aligned
@@ -45,6 +73,7 @@ MindMate features a calm, lively green color palette with a modern app-like inte
 - **Text:** #1E293B (Slate-800) for high readability
 
 **Visual Features:**
+
 - Modern app-like header with rounded bottom corners (rounded-b-3xl) and shadow-lg
 - 🌿 Leaf emoji branding element
 - Dynamic status line showing "MindMate is listening..." when AI is thinking
@@ -68,6 +97,7 @@ MindMate features a calm, lively green color palette with a modern app-like inte
 ## 🧠 Mental Health Features
 
 The AI assistant is trained to:
+
 - Validate emotions before offering advice
 - Use open-ended questions to encourage self-reflection
 - Provide psychologically-informed tools and techniques
@@ -81,7 +111,7 @@ The AI assistant is trained to:
 
 - If you're experiencing a mental health crisis, please contact emergency services or a crisis helpline immediately
 - **US:** 988 Suicide & Crisis Lifeline
-- **UK:** 116 123 (Samaritans)  
+- **UK:** 116 123 (Samaritans)
 - **International:** [Find A Helpline](https://findahelpline.com)
 
 This AI provides supportive conversation and wellness strategies but cannot diagnose conditions or prescribe treatment.
@@ -134,6 +164,7 @@ This project uses Vite's environment variable system:
 ## Color Scheme
 
 **MindMate Green Palette:**
+
 - **Background:** #F1F5F3 (Green-50) with gradient to #DCFCE7 (Green-100)
 - **Header Gradient:** #166534 (Green-800) to #14532D (Green-900)
 - **User Messages:** #4ADE80 (Green-400) - Fresh, lively green
